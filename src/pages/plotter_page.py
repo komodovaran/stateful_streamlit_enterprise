@@ -6,7 +6,7 @@ import streamlit as st
 from matplotlib.pyplot import Figure, Axes
 
 from core.core import SessionState
-from lib.utils import sync_state_after
+from lib.utils import sync_state_after, timeit
 from pages.app_page import AppPage
 
 

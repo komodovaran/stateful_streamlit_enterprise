@@ -38,7 +38,7 @@ class BaseSessionState(ABC):
             if item not in self._state["data"]:
                 self._state["data"][item] = value
 
-    def __getitem__(self, item: Any) -> Optional[Any]:
+    def __getitem__(self, item: Any) -> Any:
         """Return a saved session value, None if item is undefined."""
         return self._state["data"].get(item, None)
 
@@ -85,10 +85,10 @@ class BaseSessionState(ABC):
 class LoadedData:
     """Typesafe container for loaded data"""
 
-    _traces: Dict[str, Trace] = {}
-
-    all_filenames: List[str] = []
-    selected_filenames: List[str] = []
+    def __init__(self) -> None:
+        self._traces: Dict[str, Trace] = {}
+        self.all_filenames: List[str] = []
+        self.selected_filenames: List[str] = []
 
     def set_traces(self, names: List[str], traces: List[Trace]) -> None:
         for name, trace in zip(names, traces):
@@ -143,7 +143,7 @@ class SessionState(BaseSessionState):
         data: LoadedData,
     ):
         super().__init__(session)
-        self.data: LoadedData = data
+        self.data = data
 
 
 def _get_report_session() -> ReportSession:
