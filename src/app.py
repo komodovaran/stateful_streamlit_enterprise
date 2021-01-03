@@ -9,6 +9,7 @@ from pages.app_page import AppPage
 from pages.fit_page import FitterPage
 from pages.loader_page import LoaderPage
 from pages.plotter_page import PlotterPage
+from ui import sidebar
 
 
 class Main(AppPage):
@@ -21,7 +22,7 @@ class Main(AppPage):
         }
 
         st.sidebar.title(":floppy_disk: Page states")
-        selected_page = st.sidebar.radio("Select your page", list(pages.keys()))
+        selected_page = sidebar.radio_button("Select your page", list(pages.keys()))
 
         self.display_page_with_session(sess, pages, selected_page)
 
