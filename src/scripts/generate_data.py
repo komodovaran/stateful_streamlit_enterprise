@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 path = Path(f"~/Desktop/test").expanduser()
-path.mkdir(exist_ok=True)
+path.mkdir(exist_ok=True, parents=True)
 
 for i in range(10):
     slope = int(np.random.randint(50, 150, 1))
